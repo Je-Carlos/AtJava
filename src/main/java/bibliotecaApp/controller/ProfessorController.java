@@ -22,7 +22,9 @@ public class ProfessorController {
 
     //    incluir um novo professor
     public static Route incluirProfessor = (req, res) -> {
-        Professor professor = new Professor();
+        String nome = req.params("nome");
+
+        Professor professor = new Professor(nome);
         ProfessorService.incluir(professor);
         return "Inclusão de Professor: " + professor + " realizada!";
     };
@@ -31,14 +33,24 @@ public class ProfessorController {
     public static Route excluirProfessor = (req, res) -> {
         Integer index = Integer.valueOf(
                 req.params("id"));
-        return "Exclusão realizada: " + index;
+
+        //      recuperar professor
+        Professor professor = ProfessorService.obterPorId(index);
+
+        //      exclusão
+        ProfessorService.excluir(index);
+
+        return "Exclusão realizada: " + professor;
     };
 
     //    recuperar um professor especifico
     public static Route obterProfessorPorId = (req, res) -> {
         Integer index = Integer.valueOf(
                 req.params("id"));
-        return "Recuperar de Professor: " + index;
+
+        Professor professor = ProfessorService.obterPorId(index);
+
+        return "Recuperação de Professor: " + professor;
     };
 
 }

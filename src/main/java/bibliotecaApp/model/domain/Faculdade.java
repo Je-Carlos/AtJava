@@ -1,6 +1,5 @@
 package bibliotecaApp.model.domain;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,22 +8,24 @@ import java.util.List;
 @Getter
 @Setter
 public class Faculdade {
+    private Integer id;
     private String nome;
     private String localizacao;
     private String estado;
     private Professor professor; // um professor
-    private List<Materia> materias; // muitas materias
+    private List<Turma> materias; // muitas materias
 
 
-    public Faculdade(String nome, String localizacao, String estado) {
-        this.setNome(nome);
-        this.setLocalizacao(localizacao);
-        this.setEstado(estado);
+    public Faculdade() {
+        this.setNome("Infnet");
+        this.setLocalizacao("Rio de Janeiro");
+        this.setEstado("RJ");
+
     }
 
     @Override
     public String toString(){
-        return "Faculdade " + nome + " - " + localizacao + " - " + estado;
+        return String.format("%d: %s - %s - %s", id,nome,localizacao,estado);
     }
 
 }

@@ -1,21 +1,24 @@
 package bibliotecaApp.model.domain;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 @Getter
 @Setter
-@ToString(callSuper = true)
 
-public class MateriaExatas extends Materia {
+public class MateriaExatas extends Turma {
+    private Integer id;
     private String materia;
-    private int dia;
+    private String dia;
     private int hora;
 
-    public MateriaExatas(int duracao, boolean ativo, int turma) {
-        super(duracao, ativo, turma);
-    }
 
+    public MateriaExatas(){
+        this.setMateria("Física");
+        this.setDia("Terça e Quarta");
+        this.setHora(10);
+    }
+    @Override
+    public String toString(){ return String.format("%d: %s - %s - %d",id,materia,dia,hora);}
 
 }

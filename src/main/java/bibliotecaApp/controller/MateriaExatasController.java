@@ -1,39 +1,41 @@
 package bibliotecaApp.controller;
 
 import bibliotecaApp.model.domain.MateriaExatas;
+import bibliotecaApp.model.service.MateriaExatasService;
 import spark.Route;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MateriaExatasController {
-    // TODO - completar controller
 
-    //    recuperar todos os MateriaExatas
     public static Route obterMateriaExatas = (req, res) -> {
-       return new ArrayList<MateriaExatas>(
-                Arrays.asList(new MateriaExatas(70, false, 2),
-                        new MateriaExatas(60, true, 1))
-        );
+        return MateriaExatasService.obterLista();
     };
 
     //    incluir um novo MateriaExatas
     public static Route incluirMateriaExatas = (req, res) -> {
-        return "Inclusão de MateriaExatas: ";
+        MateriaExatas materiaExatas = new MateriaExatas();
+        MateriaExatasService.incluir(materiaExatas);
+        return "Inclusão de " + materiaExatas;
     };
 
     //    excluir um MateriaExatas existente
     public static Route excluirMateriaExatas = (req, res) -> {
         Integer index = Integer.valueOf(
                 req.params("id"));
-        return "Exclusão de MateriaExatas: " + index;
+        MateriaExatas materiaExatas = MateriaExatasService.obterPorId(index);
+        MateriaExatasService.excluir(index);
+        return "Exclusão de " + materiaExatas;
     };
 
     //    recuperar um MateriaExatas especifico
     public static Route obterMateriaExatasPorId = (req, res) -> {
         Integer index = Integer.valueOf(
                 req.params("id"));
-        return "Recuperar de MateriaExatas: " + index;
+        MateriaExatas materiaExatas = MateriaExatasService.obterPorId(index);
+
+        return "Recuperar de MateriaExatas: " + materiaExatas;
     };
 
 }

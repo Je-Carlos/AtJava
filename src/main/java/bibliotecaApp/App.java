@@ -1,7 +1,6 @@
 package bibliotecaApp;
 
 import bibliotecaApp.controller.*;
-import bibliotecaApp.model.domain.MateriaExatas;
 import spark.Spark;
 
 public class App {
@@ -21,7 +20,7 @@ public class App {
 
         //		Professor
         Spark.get("/professor/lista", ProfessorController.obterProfessor);
-        Spark.post("/professor/incluir", ProfessorController.incluirProfessor);
+        Spark.post("/professor/:nome/incluir", ProfessorController.incluirProfessor); // Só é possível chamar essa rota com o nome de quem vai incluir
         Spark.delete("/professor/:id/excluir", ProfessorController.excluirProfessor);
         Spark.get("/professor/:id", ProfessorController.obterProfessorPorId);
 
@@ -31,11 +30,11 @@ public class App {
         Spark.delete("/faculdade/:id/excluir", FaculdadeController.excluirFaculdade);
         Spark.get("/faculdade/:id", FaculdadeController.obterFaculdadePorId);
 
-        //      Materia
-        Spark.get("/materia/lista", MateriaController.obterMateria);
-        Spark.post("/materia/incluir", MateriaController.incluirMateria);
-        Spark.delete("/materia/:id/excluir", MateriaController.excluirMateria);
-        Spark.get("/materia/:id", MateriaController.obterMateriaPorId);
+        //      Turma
+        Spark.get("/turma/lista", TurmaController.obterTurma);
+        Spark.post("/turma/incluir", TurmaController.incluirTurma);
+        Spark.delete("/turma/:id/excluir", TurmaController.excluirTurma);
+        Spark.get("/turma/:id", TurmaController.obterTurmaPorId);
 
         //      Materia Exatas
         Spark.get("/materiaExatas/lista", MateriaExatasController.obterMateriaExatas);
