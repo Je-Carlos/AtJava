@@ -4,6 +4,7 @@ import bibliotecaApp.model.domain.Faculdade;
 import bibliotecaApp.model.domain.Professor;
 import bibliotecaApp.model.service.FaculdadeService;
 import bibliotecaApp.model.service.ProfessorService;
+import com.google.gson.Gson;
 import spark.Route;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class FaculdadeController {
 
     //    incluir um novo Faculdade
     public static Route incluirFaculdade = (req, res) -> {
-        Faculdade faculdade = new Faculdade();
+        Faculdade faculdade = new Gson().fromJson(req.body(), Faculdade.class);
         FaculdadeService.incluir(faculdade);
         return "Inclusão de Faculdade " + faculdade + " realizada com sucesso!";
     };

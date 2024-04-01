@@ -1,7 +1,9 @@
 package bibliotecaApp.controller;
 
+import bibliotecaApp.model.domain.MateriaHumanas;
 import bibliotecaApp.model.domain.Turma;
 import bibliotecaApp.model.service.TurmaService;
+import com.google.gson.Gson;
 import spark.Route;
 
 public class TurmaController {
@@ -12,7 +14,7 @@ public class TurmaController {
 
     //    incluir um novo Turma
     public static Route incluirTurma = (req, res) -> {
-        Turma turma = new Turma();
+        Turma turma = new Gson().fromJson(req.body(), Turma.class);
         TurmaService.incluir(turma);
         return "Inclusão de turma " + turma + "Realizada com sucesso!";
     };

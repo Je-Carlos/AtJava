@@ -24,7 +24,7 @@ public class Professor {
 
     @Override
     public String toString(){
-        return String.format("%d: %s - %s - %.2f",id,nome,disciplina,salario);
+        return String.format("ID: %d\n Nome: %s\n Disciplina: %s\n Salário: %.2f\n",id,nome,disciplina,salario);
     }
 
 

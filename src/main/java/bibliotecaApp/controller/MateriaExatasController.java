@@ -1,7 +1,9 @@
 package bibliotecaApp.controller;
 
+import bibliotecaApp.model.domain.Faculdade;
 import bibliotecaApp.model.domain.MateriaExatas;
 import bibliotecaApp.model.service.MateriaExatasService;
+import com.google.gson.Gson;
 import spark.Route;
 
 import java.util.ArrayList;
@@ -15,9 +17,10 @@ public class MateriaExatasController {
 
     //    incluir um novo MateriaExatas
     public static Route incluirMateriaExatas = (req, res) -> {
+        MateriaExatas materiaExatass = new Gson().fromJson(req.body(), MateriaExatas.class);
         MateriaExatas materiaExatas = new MateriaExatas();
-        MateriaExatasService.incluir(materiaExatas);
-        return "Inclusão de " + materiaExatas;
+        MateriaExatasService.incluir(materiaExatass);
+        return "Inclusão de " + materiaExatass;
     };
 
     //    excluir um MateriaExatas existente

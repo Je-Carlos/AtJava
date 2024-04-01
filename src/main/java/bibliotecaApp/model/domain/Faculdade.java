@@ -25,7 +25,7 @@ public class Faculdade {
 
     @Override
     public String toString(){
-        return String.format("%d: %s - %s - %s", id,nome,localizacao,estado);
+        return String.format("ID: %d\n Nome: %s\n Localização: %s\n Estado: %s\n", id,nome,localizacao,estado);
     }
 
 }

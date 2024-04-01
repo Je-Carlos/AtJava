@@ -20,7 +20,7 @@ public class App {
 
         //		Professor
         Spark.get("/professor/lista", ProfessorController.obterProfessor);
-        Spark.post("/professor/:nome/incluir", ProfessorController.incluirProfessor); // Só é possível chamar essa rota com o nome de quem vai incluir
+        Spark.post("/professor/incluir", ProfessorController.incluirProfessor); // Só é possível chamar essa rota com o nome de quem vai incluir
         Spark.delete("/professor/:id/excluir", ProfessorController.excluirProfessor);
         Spark.get("/professor/:id", ProfessorController.obterProfessorPorId);
 

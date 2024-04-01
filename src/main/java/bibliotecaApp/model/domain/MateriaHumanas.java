@@ -6,8 +6,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString(callSuper = true)
-public class MateriaHumanas extends Turma {
+public class MateriaHumanas {
     private Integer id;
     private String materia;
     private String descricao;
@@ -21,7 +20,7 @@ public class MateriaHumanas extends Turma {
 
     @Override
     public String toString() {
-        return String.format("%d: %s - %s - %d", id, materia, descricao, cargaHoraria);
+        return String.format("ID: %d\n Matéria: %s\n  Descrição: %s\n Carga Horaria: %d horas\n", id, materia, descricao, cargaHoraria);
     }
 }
 

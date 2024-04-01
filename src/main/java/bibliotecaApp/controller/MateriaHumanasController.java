@@ -4,6 +4,7 @@ import bibliotecaApp.model.domain.MateriaExatas;
 import bibliotecaApp.model.domain.MateriaHumanas;
 import bibliotecaApp.model.service.MateriaExatasService;
 import bibliotecaApp.model.service.MateriaHumanasService;
+import com.google.gson.Gson;
 import spark.Route;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class MateriaHumanasController {
 
     //    incluir um novo MateriaHumanas
     public static Route incluirMateriaHumanas = (req, res) -> {
-        MateriaHumanas materiaHumanas = new MateriaHumanas();
+        MateriaHumanas materiaHumanas = new Gson().fromJson(req.body(), MateriaHumanas.class);
         MateriaHumanasService.incluir(materiaHumanas);
         return "Inclusão de " + materiaHumanas;
     };
