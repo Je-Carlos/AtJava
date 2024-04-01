@@ -2,6 +2,7 @@ package bibliotecaApp.controller;
 
 import bibliotecaApp.model.domain.Professor;
 import bibliotecaApp.model.service.ProfessorService;
+import com.google.gson.Gson;
 import spark.Route;
 
 import java.util.ArrayList;
@@ -22,9 +23,9 @@ public class ProfessorController {
 
     //    incluir um novo professor
     public static Route incluirProfessor = (req, res) -> {
-        String nome = req.params("nome");
+//        String nome = req.params("nome");
 
-        Professor professor = new Professor(nome);
+        Professor professor = new Gson().fromJson(req.body(), Professor.class);
         ProfessorService.incluir(professor);
         return "Inclusão de Professor: " + professor + " realizada!";
     };

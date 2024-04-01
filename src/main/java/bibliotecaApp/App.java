@@ -48,6 +48,7 @@ public class App {
         Spark.delete("/materiaHumanas/:id/excluir", MateriaHumanasController.excluirMateriaHumanas);
         Spark.get("/materiaHumanas/:id", MateriaHumanasController.obterMateriaHumanasPorId);
 
+        Spark.get("viacep/:cep", ViaCepController.getEndereco);
     }
 
 }
